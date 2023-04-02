@@ -30,9 +30,14 @@ describe("[Challenge] Truster", function () {
     const attacker = await (
       await ethers.getContractFactory("TrusterAttacker", player)
     ).deploy(pool.address, token.address);
-    expect(await attacker.pool()).to.equal(pool);
-    expect(await attacker.token()).to.equal(token);
-    expect(await attacker.attacker()).to.equal(player);
+    // console.log("Pool", pool.address);
+    // console.log("Pool in attacker", await attacker.pool());
+
+    // console.log("Token", token.address);
+    // console.log("Token in attacker", await attacker.token());
+
+    // console.log("Player", player.address);
+    // console.log("Player in attacker", await attacker.player());
 
     await attacker.attack();
   });

