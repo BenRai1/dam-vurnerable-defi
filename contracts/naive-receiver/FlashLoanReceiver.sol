@@ -21,6 +21,8 @@ contract FlashLoanReceiver is IERC3156FlashBorrower {
         pool = _pool;
     }
 
+
+// public, kann also jeder aufrufen? Kann man Fee einfach auf 10 eth setzen? Was ist die erste addresse?
     function onFlashLoan(
         address,
         address token,
@@ -39,6 +41,8 @@ contract FlashLoanReceiver is IERC3156FlashBorrower {
             revert UnsupportedCurrency();
         
         uint256 amountToBeRepaid;
+
+// warum unchecked? Kann man da ein overflow machen ??
         unchecked {
             amountToBeRepaid = amount + fee;
         }
