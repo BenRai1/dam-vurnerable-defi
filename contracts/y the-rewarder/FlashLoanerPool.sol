@@ -11,7 +11,7 @@ import "../DamnValuableToken.sol";
  * @author Damn Vulnerable DeFi (https://damnvulnerabledefi.xyz)
  * @dev A simple pool to get flashloans of DVT
  */
-contract FlashLoanerPool is ReentrancyGuard {
+contract FlashLoanerPoolRewarder is ReentrancyGuard {
     using Address for address;
 
     DamnValuableToken public immutable liquidityToken;
@@ -31,7 +31,7 @@ contract FlashLoanerPool is ReentrancyGuard {
             revert NotEnoughTokenBalance();
         }
 
-        if (!msg.sender.isContract()) {
+        if (!msg.sender.isContract()) { 
             revert CallerIsNotContract();
         }
 

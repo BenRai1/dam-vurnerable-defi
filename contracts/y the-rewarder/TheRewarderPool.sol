@@ -86,7 +86,7 @@ contract TheRewarderPool {
             }
         }
     }
-
+ 
     function _recordSnapshot() private {
         lastSnapshotIdForRewards = uint128(accountingToken.snapshot());
         lastRecordedSnapshotTimestamp = uint64(block.timestamp);
