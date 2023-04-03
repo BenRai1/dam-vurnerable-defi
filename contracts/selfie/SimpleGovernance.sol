@@ -12,7 +12,7 @@ contract SimpleGovernance is ISimpleGovernance {
 
     uint256 private constant ACTION_DELAY_IN_SECONDS = 2 days;
     DamnValuableTokenSnapshot private _governanceToken;
-    uint256 private _actionCounter;
+    uint256 public _actionCounter;
     mapping(uint256 => GovernanceAction) private _actions;
 
     constructor(address governanceToken) {

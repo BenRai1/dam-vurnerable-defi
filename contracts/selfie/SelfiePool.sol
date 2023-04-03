@@ -17,6 +17,8 @@ contract SelfiePool is ReentrancyGuard, IERC3156FlashLender {
     SimpleGovernance public immutable governance;
     bytes32 private constant CALLBACK_SUCCESS = keccak256("ERC3156FlashBorrower.onFlashLoan");
 
+    mapping(address => uint256) public successfullLoans;
+
     error RepayFailed();
     error CallerNotGovernance();
     error UnsupportedCurrency();
@@ -45,7 +47,7 @@ contract SelfiePool is ReentrancyGuard, IERC3156FlashLender {
         if (address(token) != _token)
             revert UnsupportedCurrency();
         return 0;
-    }
+    } 
 
     function flashLoan(
         IERC3156FlashBorrower _receiver,
@@ -63,6 +65,7 @@ contract SelfiePool is ReentrancyGuard, IERC3156FlashLender {
         if (!token.transferFrom(address(_receiver), address(this), _amount))
             revert RepayFailed();
         
+        successfullLoans[msg.sender] = 1;
         return true;
     }
 
