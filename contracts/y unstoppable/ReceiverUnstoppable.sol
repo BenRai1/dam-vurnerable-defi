@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/interfaces/IERC3156FlashBorrower.sol";
 import "solmate/src/auth/Owned.sol";
-import { UnstoppableVault, ERC20 } from "../unstoppable/UnstoppableVault.sol";
+import { UnstoppableVault, ERC20 } from "../y unstoppable/UnstoppableVault.sol";
 
 /**
  * @title ReceiverUnstoppable
@@ -15,7 +15,7 @@ contract ReceiverUnstoppable is Owned, IERC3156FlashBorrower {
     error UnexpectedFlashLoan();
 
     constructor(address poolAddress) Owned(msg.sender) {
-        pool = UnstoppableVault(poolAddress);
+        pool = UnstoppableVault(poolAddress); 
     }
 
     function onFlashLoan(

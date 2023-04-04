@@ -11,7 +11,7 @@ import "./FlashLoanReceiver.sol";
  * @title NaiveReceiverLenderPool
  * @author Damn Vulnerable DeFi (https://damnvulnerabledefi.xyz)
  */
-contract NaiveReceiverLenderPool is ReentrancyGuard, IERC3156FlashLender {
+contract NaiveReceiverLenderPool is ReentrancyGuard, IERC3156FlashLender { 
 
     address public constant ETH = 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE;
     uint256 private constant FIXED_FEE = 1 ether; // not the cheapest flash loan
