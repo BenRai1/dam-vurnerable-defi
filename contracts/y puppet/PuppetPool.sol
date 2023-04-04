@@ -60,5 +60,7 @@ contract PuppetPool is ReentrancyGuard {
     function _computeOraclePrice() private view returns (uint256) {
         // calculates the price of the token in wei according to Uniswap pair
         return uniswapPair.balance * (10 ** 18) / token.balanceOf(uniswapPair);
+
+        // Eth amount/amount DVT Token 
     }
 }
